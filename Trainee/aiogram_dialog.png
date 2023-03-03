@@ -1,0 +1,15 @@
+digraph "Aiogram Dialog" {
+	graph [fontcolor="#2D3436" fontname="Sans-Serif" fontsize=15 label="Aiogram Dialog" nodesep=0.60 pad=2.0 rankdir=LR ranksep=0.75 splines=ortho]
+	node [fixedsize=true fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13 height=1.4 imagescale=true labelloc=b shape=box style=rounded width=1.4]
+	edge [color="#7B8894"]
+	subgraph cluster_RenderSG {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label=RenderSG labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		ada9267a80fe455eb72c80603b42aab2 [label="RenderSG:first" height=1.9 image="/Users/smdlkhn/PycharmProjects/27-03-LeninoBot/venv/bin/lib/python3.11/site-packages/aiogram_dialog/tools/calculator.png" shape=none]
+		f868cc0759e1446c8baf3fc3264c6a69 [label="RenderSG:second" height=1.9 image="/Users/smdlkhn/PycharmProjects/27-03-LeninoBot/venv/bin/lib/python3.11/site-packages/aiogram_dialog/tools/calculator.png" shape=none]
+		"7231f7e36c1d48eda603a2b7d07420c2" [label="RenderSG:third" height=1.9 image="/Users/smdlkhn/PycharmProjects/27-03-LeninoBot/venv/bin/lib/python3.11/site-packages/aiogram_dialog/tools/calculator.png" shape=none]
+	}
+	ada9267a80fe455eb72c80603b42aab2 -> f868cc0759e1446c8baf3fc3264c6a69 [color="#0086c3" dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	f868cc0759e1446c8baf3fc3264c6a69 -> ada9267a80fe455eb72c80603b42aab2 [color=grey dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	f868cc0759e1446c8baf3fc3264c6a69 -> "7231f7e36c1d48eda603a2b7d07420c2" [color="#0086c3" dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"7231f7e36c1d48eda603a2b7d07420c2" -> f868cc0759e1446c8baf3fc3264c6a69 [color=grey dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+}
