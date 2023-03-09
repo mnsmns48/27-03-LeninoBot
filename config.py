@@ -5,6 +5,7 @@ from environs import Env
 @dataclass
 class TgBot:
     bot_token: str
+    admin_id: int
 
 
 @dataclass
@@ -18,5 +19,6 @@ def load_config(path: str = None):
 
     return Config(
         tg_bot=TgBot(
-            bot_token=env.str("BOT_TOKEN")
+            bot_token=env.str("BOT_TOKEN"),
+            admin_id=env.int("ADMIN_ID")
         ))
