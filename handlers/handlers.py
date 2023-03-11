@@ -20,6 +20,15 @@ async def cmd_start(m: Message, dialog_manager: DialogManager):
     await dialog_manager.start(MySG.main, mode=StartMode.RESET_STACK)
 
 
+async def help_func(m: Message):
+    await m.answer("Вы предлагаете либо текстовую новость(пост), либо новость, содержащую МЕДИА файлы (картинки или видео)\n"
+                   "Если новость соответствует тематике и по мнению АДМИНа будет полезной или интересной жителям "
+                   "посёлка Ленино или района, то он её опубликует\n\n"
+                   "По любым вопросам пишите Админу, через соответсвующую кнопку\n\n"
+                   "Предложения и замечания приветствуются"
+                   "Если что-то не работает, остановите БОТа и перезапустите снова командой \n/start\n\n")
+
+
 async def load_text(message: types.Message, dialog_manager: DialogManager):
     PostMessage.caption_text = f'{message.text}\n\n{message.from_user.first_name} {message.from_user.last_name}'
     if message.from_user.username:
@@ -94,6 +103,7 @@ async def load_admin_text(message: types.Message, dialog_manager: DialogManager)
 
 def register_all_handlers():
     dp.register_message_handler(cmd_start, CommandStart())
+    dp.register_message_handler(help_func, commands=['help'])
     dp.register_message_handler(load_text, state=PostMessage.caption)
     dp.register_message_handler(send_media, state=PostMessage.media, is_media_group=True,
                                 content_types=types.ContentType.ANY)

@@ -68,11 +68,13 @@ async def finish_post(c: CallbackQuery, button: Button, dialog_manager: DialogMa
 
 async def add_media(c: CallbackQuery, button: Button, dialog_manager: DialogManager):
     await PostMessage.media.set()
-    await c.message.answer("Добавьте медиафайлы\n\nМожно несколько фото или видео")
+    await c.message.answer("Добавьте МЕДИА файлы\n\nК примеру, одно или несколько фото (видео)\n\n"
+                           "Подпись к МЕДИА файлам не добавлять")
 
 
 async def cancel(c: CallbackQuery, button: Button, dialog_manager: DialogManager):
     await c.message.answer("Отменяем. Нужно начинать заново")
+    await MySG.main.set()
     await dialog_manager.start(MySG.main, mode=StartMode.RESET_STACK)
 
 
@@ -85,6 +87,7 @@ row1 = Row(
 row2 = Row(
     Button(Const("+ Медиа"), id="send", on_click=add_media),
     Button(Const("Без Медиа"), id="send_only_text", on_click=send_only_text),
+    Button(Const("Отмена"), id="cancel", on_click=cancel),
 
 )
 row3 = Row(
@@ -108,7 +111,7 @@ main_window = Dialog(
         state=MySG.choose1,
     ),
     Window(
-        Format("Публикуем в @leninocremia ?\n\nПост можно предложить не чаще одного раза в час"),
+        Format("Публикуем в @leninocremia ?"),
         row3,
         state=MySG.choose2,
     ),
